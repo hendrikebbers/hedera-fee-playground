@@ -6,18 +6,34 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * A sample handler of the token service that shows how the fee caclulation might look like.
+ */
 public class CreateTokenHandler {
 
   private final FeeCalculator feeCalculator;
 
+  /**
+   * The feeCalculator should be provided by the app-spi
+   * @param feeCalculator
+   */
   public CreateTokenHandler(final FeeCalculator feeCalculator) {
     this.feeCalculator = Objects.requireNonNull(feeCalculator);
   }
 
+
+  /**
+   * The handle method of the service
+   */
   public static void handle() {
     throw new IllegalStateException("Not yet implemented");
   }
 
+  /**
+   * This method does the fee calculation. Here we can use the concreate variables of the calculation as input params.
+   * @param tokenSize a concrete variable for the calculation (just a sample)
+   * @return the fee
+   */
   public BigDecimal calculateFee(final BigDecimal tokenSize) {
     final Map<String, BigDecimal> input = Map.of("tokenSize", tokenSize);
     final OperationMetadata createTokenOperation = feeCalculator.getAllServices().stream()
