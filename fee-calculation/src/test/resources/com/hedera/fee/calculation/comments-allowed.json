@@ -1,0 +1,24 @@
+[
+  {
+    "_comment": "This file sets contains comments that will help us in the real file to add some documentation.",
+    "name": "TokenService",
+    "description": "Service that handle all token operations",
+    "_comment": "We can have multiple comment members in the same level.",
+    "operations": [
+      {
+        "name": "CreateToken",
+        "_comment": "Another comment.",
+        "description": "Operation to create a token",
+        "formulaExpression": "2 * ${tokenSize}",
+        "minimalValue": "0",
+        "parameters": [
+          {
+            "name": "tokenSize",
+            "description": "The size of the token",
+            "_comment": "Another comment."
+          }
+        ]
+      }
+    ]
+  }
+]
