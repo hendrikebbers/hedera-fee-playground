@@ -59,7 +59,7 @@
                     "type": "boolean"
                   },
                   "defaultValue": {
-                    "description": "TODO",
+                    "description": "If the 'optional' member is defined as 'false' a 'defaultValue' must be specified.",
                     "type": "string"
                   }
                 },
