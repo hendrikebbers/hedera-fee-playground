@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hedera.com/path.to.json",
+  "$comment": "JSON Schema (https://json-schema.org) for the fee calculation model",
+  "title": "Fee Calculation Model",
+  "description": "A model that contains all metadata to calculate the needed fee for operations on the hedera hashgraph",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "description": "A service of the hedera hashgraph. All interactions with the hedera hashgraph belong to a named service like the 'TokenService'.",
+    "properties": {
+      "name": {
+        "description": "Name of the service (for example 'TokenService')",
+        "type": "string"
+      },
+      "description": {
+        "description": "Description of the service",
+        "type": "string"
+      },
+      "operations": {
+        "description": "A set of all operations for the given service",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "description": "An operation of the hedera hashgraph. An example for such operation is the creation of a new token",
+          "properties": {
+            "name": {
+              "description": "Name of the operation (for example 'TokenCreation')",
+              "type": "string"
+            },
+            "description": {
+              "description": "Description of the operation",
+              "type": "string"
+            },
+            "formulaExpression": {
+              "description": "This string contains the formular expression based on XXX. Based on the expression and the parameters the concrete calculation for a specific action is created and the fee can be calculated.",
+              "type": "string"
+            },
+            "parameters": {
+              "description": "The 'formulaExpression' can (and should) contain parameters. Such parameters are input parameters of the formula and must be replaced with concrete values when calculating a fee. This set contain all the metadata of all parameters that are supported by the formula",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "description": "A parameter of a specific formula",
+                "properties": {
+                  "name": {
+                    "description": "The (technical) name of the parameter (for example 'bps')",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "The description of the parameter.",
+                    "type": "string"
+                  },
+                  "optional": {
+                    "description": "A parameter can be optional. In that case the 'defaultValue' will be used as value for the parameter. If the 'optional' value is not defined a parameter is not optional",
+                    "type": "boolean"
+                  },
+                  "defaultValue": {
+                    "description": "TODO",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "description"
+                ],
+                "if": {
+                  "$comment": "If 'optional' is true a 'defaultValue' needs to be specified. See https://json-schema.org/understanding-json-schema/reference/conditionals.html#if-then-else",
+                  "required": [
+                    "optional"
+                  ],
+                  "properties": {
+                    "optional": {
+                      "enum": [
+                        false,
+                        null
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "name",
+                    "description",
+                    "optional",
+                    "defaultValue"
+                  ]
+                }
+              }
+            },
+            "minimalValue": {
+              "description": "Defines a minimal value for the fee. Since 'java.math.BigDecimal' (https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html) is used in Java a string is used in the model to define a value as accurate as possible. If the calculation based on the 'formulaExpression' and 'parameters' ends in a value that is less than the given 'minimalValue' the 'minimalValue' is used instead.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "formulaExpression",
+            "parameters",
+            "minimalValue"
+          ]
+        }
+      }
+    },
+    "required": [
+      "name",
+      "description",
+      "operations"
+    ]
+  }
+}

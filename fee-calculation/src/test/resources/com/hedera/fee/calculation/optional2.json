@@ -1,0 +1,22 @@
+[
+  {
+    "_comment": "This file sets 'optional' for the param to 'false'. Since 'defaultValue' is not specified this json is not valid",
+    "name": "TokenService",
+    "description": "Service that handle all token operations",
+    "operations": [
+      {
+        "name": "CreateToken",
+        "description": "Operation to create a token",
+        "formulaExpression": "2 * ${tokenSize}",
+        "minimalValue": "0",
+        "parameters": [
+          {
+            "name": "tokenSize",
+            "description": "The size of the token",
+            "optional": false
+          }
+        ]
+      }
+    ]
+  }
+]
