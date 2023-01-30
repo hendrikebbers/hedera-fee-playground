@@ -11,14 +11,15 @@ The JSON schema can found at [fee-calculation/src/main/resources/com/hedera/fee/
 When building the project a unit tests checks if the current model is valid against the schema.
 
 The `fee-calculation` module contains a service that can be used to interact with the model.
-The `com.hedera.fee.calculation.FeeCalculator` interface defines the API and an instance can be 
-created by using the `com.hedera.fee.calculation.FeeCalculatorFactory`.
+The [`com.hedera.fee.calculation.FeeCalculator`](fee-calculation/src/main/java/com/hedera/fee/calculation/FeeCalculator.java) interface defines the API and an instance can be 
+created by using the [`com.hedera.fee.calculation.FeeCalculatorFactory`](fee-calculation/src/main/java/com/hedera/fee/calculation/FeeCalculatorFactory.java).
 The `FeeCalculator` interface defines an API to get access to all metadata that is defined by the JSON.
 Next to this it contains a function to start a fee calculation. 
 Currently the concrete implementation of the calculation is missing and an exception will be thrown.
 
-The `token-service` module contains a sample handler implementation that shows how a handler might
-use the API to provide a concrete fee calculation for the usacase of the handler.
+The `token-service` module contains [a sample handler](token-service/src/main/java/com/hedera/app/service/token/CreateTokenHandler.java)
+implementation that shows how a handler might
+use the API to provide a concrete fee calculation for the usecase of the handler.
 
 ## Build the project
 
