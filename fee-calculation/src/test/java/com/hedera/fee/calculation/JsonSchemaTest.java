@@ -10,6 +10,9 @@ import net.jimblackler.jsonschemafriend.Validator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * This class tests that the JSON schema works as expected.
+ */
 public class JsonSchemaTest {
 
   public static final String SCHEMA_FILE = "fee-model-schema.json";
@@ -87,5 +90,6 @@ public class JsonSchemaTest {
     //then
     Assertions.assertDoesNotThrow(() -> validate(schema, data));
   }
+
 
 }

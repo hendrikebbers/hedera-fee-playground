@@ -6,9 +6,9 @@ A repo to create a new definition and API to calculate fees for the usage of the
 The base of the repo is a JSON that contains all data that is needed to do the calculations.
 The JSON is located at [fee-calculation/src/main/resources/com/hedera/fee/calculation/fee-model.json](fee-calculation/src/main/resources/com/hedera/fee/calculation/fee-model.json).
 
-Since the JSON will be mutated whenever anything in the calculation is changed A JSON Schema is defined for the file.
+Since the JSON will be mutated whenever anything in the calculation is changed a [JSON Schema](https://json-schema.org) is defined for the file.
 The JSON schema can found at [fee-calculation/src/main/resources/com/hedera/fee/calculation/fee-model-schema.json](fee-calculation/src/main/resources/com/hedera/fee/calculation/fee-model-schema.json).
-When building the project a unit tests checks if the current model is valid against the schema.
+When building the project a [unit test](fee-calculation/src/test/java/com/hedera/fee/calculation/ModelTest.java) checks if the current model is valid against the schema.
 
 The `fee-calculation` module contains a service that can be used to interact with the model.
 The [`com.hedera.fee.calculation.FeeCalculator`](fee-calculation/src/main/java/com/hedera/fee/calculation/FeeCalculator.java) interface defines the API and an instance can be 
