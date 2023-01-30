@@ -3,7 +3,7 @@ A repo to create a new definition and API to calculate fees for the usage of the
 
 ## Overview
 
-The base of the repo is a JSON that contains all data that is needed to do the calculations.
+The base of the repo is a JSON that contains all data that is needed to do the fee calculations.
 The JSON is located at [fee-calculation/src/main/resources/com/hedera/fee/calculation/fee-model.json](fee-calculation/src/main/resources/com/hedera/fee/calculation/fee-model.json).
 
 Since the JSON will be mutated whenever anything in the calculation is changed a [JSON Schema](https://json-schema.org) is defined for the file.
@@ -31,3 +31,7 @@ To execute a full build just call
 ```
 mvnw verify
 ```
+
+## Links
+
+The current JSON definition can be found [here](https://github.com/hashgraph/hedera-fee-tool-js/tree/master/src/resources).

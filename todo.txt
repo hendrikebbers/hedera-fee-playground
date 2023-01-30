@@ -1,0 +1,3 @@
+- Maybe we can use LONG instead of BigDecimal -> In that case the unit will be TinyBar
+- JSON schema not working for 'optional' member.
+- Check if 'name' can be defined as unique by JSON schema
