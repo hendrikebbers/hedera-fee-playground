@@ -3,7 +3,6 @@ package com.hedera.fee.calculation;
 import com.hedera.fee.calculation.impl.FeeCalculatorImpl;
 import com.hedera.fee.calculation.model.OperationMetadata;
 import com.hedera.fee.calculation.model.ServiceMetadata;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,5 +24,5 @@ public sealed interface FeeCalculator permits FeeCalculatorImpl {
    * @param input the input values
    * @return the result of the calculation
    */
-  BigDecimal calculate(OperationMetadata operation, final Map<String, BigDecimal> input);
+  long calculate(OperationMetadata operation, final Map<String, Long> input);
 }

@@ -6,7 +6,7 @@
       {
         "name": "CreateToken",
         "description": "Operation to create a token",
-        "formulaExpression": "2 * ${tokenSize}",
+        "formulaExpression": "2 * tokenSize",
         "minimalValue": "0",
         "parameters": [
           {

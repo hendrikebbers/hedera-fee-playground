@@ -2,7 +2,6 @@ package com.hedera.app.service.token;
 
 import com.hedera.fee.calculation.FeeCalculator;
 import com.hedera.fee.calculation.model.OperationMetadata;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Objects;
 
@@ -34,8 +33,8 @@ public class CreateTokenHandler {
    * @param tokenSize a concrete variable for the calculation (just a sample)
    * @return the fee
    */
-  public BigDecimal calculateFee(final BigDecimal tokenSize) {
-    final Map<String, BigDecimal> input = Map.of("tokenSize", tokenSize);
+  public long calculateFee(final Long tokenSize) {
+    final Map<String, Long> input = Map.of("tokenSize", tokenSize);
     final OperationMetadata createTokenOperation = feeCalculator.getAllServices().stream()
         .filter(service -> Objects.equals("TokenService", service.name()))
         .flatMap(service -> service.operations().stream())
